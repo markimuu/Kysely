@@ -1,1 +1,1 @@
-"# Kysely" 
+Kysely ohjelmointiprojekti kurssille
