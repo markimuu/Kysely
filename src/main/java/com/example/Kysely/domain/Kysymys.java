@@ -11,8 +11,8 @@ public class Kysymys {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id", nullable = false, updatable = false)
-	private long id;
+	@Column(name="kysymysid", nullable = false, updatable = false)
+	private long kysymysid;
 	private String kysymys;
 	
 	public Kysymys() {
@@ -23,12 +23,12 @@ public class Kysymys {
 		this.kysymys = kysymys; 
 	}
 
-	public long getId() {
-		return id;
+	public long getKysymysId() {
+		return kysymysid;
 	}
 	
-	public void setId(long id) {
-		this.id = id;
+	public void setKysymysId(long kysymysid) {
+		this.kysymysid = kysymysid;
 	}
 	
 	public String getKysymys() {
@@ -41,7 +41,7 @@ public class Kysymys {
 	
 	@Override
 	public String toString() {
-		return "Kysymys [id=" + id + ", kysymys=" + kysymys + "]";
+		return "Kysymys [kysymysid=" + kysymysid + ", kysymys=" + kysymys + "]";
 	}
 	
 }

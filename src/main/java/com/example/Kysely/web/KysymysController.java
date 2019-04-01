@@ -36,8 +36,8 @@ public class KysymysController {
     
     // RESTful service to get question by id
     @RequestMapping(value="/kysymys/{id}", method = RequestMethod.GET)
-    public @ResponseBody Optional<Kysymys> findKysymysRest(@PathVariable("id") Long id) {	
-    	return repo.findById(id);
+    public @ResponseBody Optional<Kysymys> findKysymysRest(@PathVariable("id") Long kysymysid) {	
+    	return repo.findById(kysymysid);
     } 
 	
 }

@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface KysymysRepository extends CrudRepository<Kysymys, Long> {
 
-    List<Kysymys> findById(long id);
+    List<Kysymys> findByKysymysId(long kysymysid);
     List<Kysymys> findByKysymys(String kysymys);
     
 }
