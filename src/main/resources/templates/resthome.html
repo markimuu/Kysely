@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Kysely - Resthome</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <h1>REST Home Page</h1>
+
+	<h2>Kaikki Kysymykset</h2>
+	<p>
+		<strong>Method:</strong> GET <strong>Endpoint:</strong> <strong><a
+			href="/kysymykset">/kysymykset</a></strong>
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	<pre><code>[
+	{
+	"kysymys": "Sukupuoli:",
+	"kysymysid": 1
+	},
+	{
+	"kysymys": "Status:",
+	"kysymysid": 2
+	}
+]	</code></pre>
+
+	<h2>Kysymys Id :llä</h2>
+	<p>
+		<strong>GET </strong><strong> /kysymys/{id} </strong> <strong>
+		<a href="/kysymys/2">/kysymys/2</a></strong>
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	
+	<pre><code>	{
+	"kysymys": "Status:",
+	"kysymysid": 2
+	}	</code></pre>
+
+	<h2>Uusi Kysymys</h2>
+	<p>
+		<strong>POST </strong> <strong> /kysymykset</strong> (Kokeile
+		<a href="https://www.getpostman.com/" target="_blank">Postmänillä</a>/jne.)
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	<pre><code>	{
+	"kysymys": "Lempivärisi:",
+	"kysymysid": 6
+	}	</code></pre>
+	
+	<h2>Uusi Vastaus</h2>
+	<p>
+		<strong>POST </strong> <strong> /vastaukset</strong> (Kokeile
+		<a href="https://www.getpostman.com/" target="_blank">Postmänillä</a>/jne.)
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	<pre><code>	{
+	???
+	}	</code></pre>
+    </body>
+</html>

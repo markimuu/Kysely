@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +22,12 @@ public class KysymysController {
 
 	@Autowired
 	private KysymysRepository repo;
+	
+	// REST Homepage
+    @RequestMapping(value="/resthome", method = RequestMethod.GET)
+    public String resthomeList() {	
+        return "resthome";
+    }
 	
 	// RESTful service to get all questions
     @RequestMapping(value="/kysymykset", method = RequestMethod.GET)
