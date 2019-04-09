@@ -45,6 +45,6 @@ public class KysymysController {
     @RequestMapping(value="/kysymys/{kysymysid}", method = RequestMethod.GET)
     public @ResponseBody Optional<Kysymys> findKysymysRest(@PathVariable("kysymysid") Long kysymysid) {	
     	return repo.findById(kysymysid);
-    } 
+    }
 	
 }
