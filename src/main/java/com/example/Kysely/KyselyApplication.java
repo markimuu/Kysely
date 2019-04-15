@@ -9,7 +9,8 @@ import org.springframework.context.annotation.Bean;
 
 import com.example.Kysely.domain.Kysymys;
 import com.example.Kysely.domain.KysymysRepository;
-
+import com.example.Kysely.domain.Vastaus;
+import com.example.Kysely.domain.VastausRepository;
 
 @SpringBootApplication
 public class KyselyApplication {
@@ -21,19 +22,30 @@ public class KyselyApplication {
 	}
 
 	@Bean
-	public CommandLineRunner kysymysDemo(KysymysRepository repo) {
+	public CommandLineRunner kyselyDemo(KysymysRepository repo, VastausRepository vrepo) {
 		return (args) -> {
 			log.info("Save 5 questions");
-			repo.save(new Kysymys("Sukupuoli:"));
-			repo.save(new Kysymys("Status:"));
-			repo.save(new Kysymys("Valitse yleisimmät ostoksesi:"));
-			repo.save(new Kysymys("Mitä mieltä olet hintatasosta?"));
-			repo.save(new Kysymys("Toiveita/muutoksia tuotevalikoimaan tai kahvilan toimintaan liittyen?"));
+			Kysymys kysymys1 = new Kysymys("Sukupuoli:");
+			Kysymys kysymys2 = new Kysymys("Status:");
+			Kysymys kysymys3 = new Kysymys("Valitse yleisimmät ostoksesi:");
+			Kysymys kysymys4 = new Kysymys("Mitä mieltä olet hintatasosta?");
+			Kysymys kysymys5 = new Kysymys("Toiveita/muutoksia tuotevalikoimaan tai kahvilan toimintaan liittyen?");
+			repo.save(kysymys1);
+			repo.save(kysymys2);
+			repo.save(kysymys3);
+			repo.save(kysymys4);
+			repo.save(kysymys5);
 			
+			log.info("Save 5 answers");
+			vrepo.save(new Vastaus("Mies", kysymys1));
+			vrepo.save(new Vastaus("Opiskelija", kysymys2));
+			vrepo.save(new Vastaus("1,2,3", kysymys3));
+			vrepo.save(new Vastaus("4", kysymys4));
+			vrepo.save(new Vastaus("Hieman halvemmat hinnat ja ystävällisempi asiakaspalvelu.", kysymys5));
 			
 			log.info("Fetch all questions");
-			for (Kysymys kysymys : repo.findAll()) {
-				log.info(kysymys.toString());
+			for (Vastaus vastaus : vrepo.findAll()) {
+				log.info(vastaus.toString());
 			}
 			
 		};

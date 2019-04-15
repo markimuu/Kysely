@@ -5,22 +5,35 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Vastaus {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="vastausid", nullable = false, updatable = false)
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	//@Column(name="vastausid", nullable = false, updatable = false)
 	private long vastausid;
 	private String vastaus;
 
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name = "kysymysid")
+	private Kysymys kysymys;
+	
 	public Vastaus() {
+		//
 	}
+	
 
-	public Vastaus(String vastaus) {
+	public Vastaus(String vastaus, Kysymys kysymys) {
 		super();
-		this.vastaus = vastaus; 
+		this.vastaus = vastaus;
+		this.kysymys = kysymys;
 	}
 
 	public long getVastausid() {
@@ -38,10 +51,22 @@ public class Vastaus {
 	public void setVastaus(String vastaus) {
 		this.vastaus = vastaus;
 	}
+	
+	public Kysymys getKysymys() {
+		return kysymys;
+	}
+
+
+	public void setKysymys(Kysymys kysymys) {
+		this.kysymys = kysymys;
+	}
+
 
 	@Override
 	public String toString() {
 		return "Vastaus [vastausid=" + vastausid + ", vastaus=" + vastaus + "]";
 	}
+
+	
 	
 }
