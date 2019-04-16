@@ -43,7 +43,7 @@
 
 	<h2>Uusi Kysymys</h2>
 	<p>
-		<strong>POST </strong> <strong> /kysymykset</strong> (Kokeile
+		<strong>Method:</strong> POST <strong> /kysymykset</strong> (Kokeile
 		<a href="https://www.getpostman.com/" target="_blank">Postmänillä</a>/jne.)
 	</p>
 	<p>
@@ -54,16 +54,52 @@
 	"kysymysid": 6
 	}	</code></pre>
 	
+	<h2>Kaikki Vastaukset</h2>
+	<p>
+		<strong>Method:</strong> GET <strong>Endpoint:</strong> <strong><a
+			href="/vastaukset">/vastaukset</a></strong>
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	<pre><code>[
+	{
+	"vastausid": 1,
+	"vastaus": "Mies"
+	},
+	{
+	"vastausid": 2,
+	"vastaus": "Opettaja"
+	}
+]	</code></pre>
+
+	<h2>Vastaus Id :llä</h2>
+	<p>
+		<strong>GET </strong><strong> /vastaus/{id} </strong> <strong>
+		<a href="/vastaus/2">/vastaus/2</a></strong>
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	
+	<pre><code>	{
+	"vastausid": 2,
+	"vastaus": "Opiskelija"
+	}	</code></pre>
+	
 	<h2>Uusi Vastaus</h2>
 	<p>
-		<strong>POST </strong> <strong> /vastaukset</strong> (Kokeile
+		<strong>Method:</strong> POST <strong> /vastaukset</strong> (Kokeile
 		<a href="https://www.getpostman.com/" target="_blank">Postmänillä</a>/jne.)
 	</p>
 	<p>
 		<strong>JSON Esimerkki:</strong>
 	</p>
 	<pre><code>	{
-	???
+	"vastaus": "Muu",
+    	"kysymys": {
+    		"kysymysid": 1
+    		}
 	}	</code></pre>
     </body>
 </html>

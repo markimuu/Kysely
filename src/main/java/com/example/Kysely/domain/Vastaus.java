@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -16,12 +16,12 @@ public class Vastaus {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	//@Column(name="vastausid", nullable = false, updatable = false)
+	@Column(name="vastausid", nullable = false, updatable = false)
 	private long vastausid;
 	private String vastaus;
 
 	@ManyToOne
-	@JsonIgnore
+	@JsonBackReference
 	@JoinColumn(name = "kysymysid")
 	private Kysymys kysymys;
 	

@@ -48,13 +48,11 @@ public class KysymysController {
     
     // REST Get all questions
     @RequestMapping(value="/kysymykset", method = RequestMethod.GET)
-    public @ResponseBody List<Kysymys> kysymyksetRest() {	
-        return (List<Kysymys>) repo.findAll();
+    public @ResponseBody List<Kysymys> kysymyksetRest() {
+    	return (List<Kysymys>) repo.findAll();
     }
     
-    
     //jotain tähän
-    
     
     
     // REST Get all answers

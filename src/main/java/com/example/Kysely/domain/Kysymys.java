@@ -18,7 +18,7 @@ public class Kysymys {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	//@Column(name="kysymysid", nullable = false, updatable = false)
+	@Column(name="kysymysid", nullable = false, updatable = false)
 	private long kysymysid;
 	private String kysymys;
 	
@@ -66,8 +66,5 @@ public class Kysymys {
 	public String toString() {
 		return "Kysymys [kysymysid=" + kysymysid + ", kysymys=" + kysymys + ", vastaukset=" + vastaukset + "]";
 	}
-
-
-	
 	
 }
