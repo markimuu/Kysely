@@ -28,7 +28,10 @@ public class KyselyApplication {
 		return (args) -> {
 			
 			Kysely kysely1 = new Kysely("Kahvila kysely");
+			Kysely kysely2 = new Kysely("Kahvila kysely 2");
 			krepo.save(kysely1);
+			krepo.save(kysely2);
+			
 			
 			log.info("Save 5 questions");
 			Kysymys kysymys1 = new Kysymys("Sukupuoli:", kysely1);
@@ -51,8 +54,8 @@ public class KyselyApplication {
 
 			
 			log.info("Fetch all questions");
-			for (Kysely kysely : krepo.findAll()) {
-				log.info(kysely.toString());
+			for (Vastaus vastaus : vrepo.findAll()) {
+				log.info(vastaus.toString());
 			}
 			
 		};

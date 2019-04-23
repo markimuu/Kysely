@@ -78,10 +78,25 @@ public class KysymysController {
     	return vrepo.findById(vastausid);
     }
     
-    // REST Get all 
+    
+    // kyselyt kake
+    
+    // REST Get all polls
     @RequestMapping(value="/kyselyt", method = RequestMethod.GET)
     public @ResponseBody List<Kysely> kyselyRest() {	
         return (List<Kysely>) krepo.findAll();
     }
 	
+    // REST Save one poll
+    @RequestMapping(value="/kyselyt", method = RequestMethod.POST)
+    public @ResponseBody Kysely addKyselyRest(@RequestBody Kysely kysely) {	
+        return krepo.save(kysely);
+    }
+    
+    // REST Get poll by id 
+    @RequestMapping(value="/kysely/{kyselyid}", method = RequestMethod.GET)
+    public @ResponseBody Optional<Kysely> findKyselyRest(@PathVariable("kyselyid") Long kyselyid) {	
+    	return krepo.findById(kyselyid);
+    }
+    
 }

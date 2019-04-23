@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Kysely {
@@ -23,7 +24,7 @@ public class Kysely {
 	private String otsikko;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysely")
-	@JsonBackReference
+	@JsonManagedReference
 	private List<Kysymys> kysymykset;
 	
 	
@@ -63,8 +64,7 @@ public class Kysely {
 
 	@Override
 	public String toString() {
-		return "Kysely [kyselyid=" + kyselyid + ", otsikko=" + otsikko + "]";
+		return "Kysely [kyselyid=" + kyselyid + ", otsikko=" + otsikko + ", kysymykset=" + kysymykset + "]";
 	}
-
 	
 }
