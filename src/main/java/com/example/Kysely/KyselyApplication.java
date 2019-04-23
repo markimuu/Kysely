@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.example.Kysely.domain.Kysely;
+import com.example.Kysely.domain.KyselyRepository;
 import com.example.Kysely.domain.Kysymys;
 import com.example.Kysely.domain.KysymysRepository;
 import com.example.Kysely.domain.Vastaus;
@@ -22,14 +24,18 @@ public class KyselyApplication {
 	}
 
 	@Bean
-	public CommandLineRunner kyselyDemo(KysymysRepository repo, VastausRepository vrepo) {
+	public CommandLineRunner kyselyDemo(KysymysRepository repo, VastausRepository vrepo, KyselyRepository krepo) {
 		return (args) -> {
+			
+			Kysely kysely1 = new Kysely("Kahvila kysely");
+			krepo.save(kysely1);
+			
 			log.info("Save 5 questions");
-			Kysymys kysymys1 = new Kysymys("Sukupuoli:");
-			Kysymys kysymys2 = new Kysymys("Status:");
-			Kysymys kysymys3 = new Kysymys("Valitse yleisimmät ostoksesi:");
-			Kysymys kysymys4 = new Kysymys("Mitä mieltä olet hintatasosta?");
-			Kysymys kysymys5 = new Kysymys("Toiveita/muutoksia tuotevalikoimaan tai kahvilan toimintaan liittyen?");
+			Kysymys kysymys1 = new Kysymys("Sukupuoli:", kysely1);
+			Kysymys kysymys2 = new Kysymys("Status:", kysely1);
+			Kysymys kysymys3 = new Kysymys("Valitse yleisimmät ostoksesi:", kysely1);
+			Kysymys kysymys4 = new Kysymys("Mitä mieltä olet hintatasosta?", kysely1);
+			Kysymys kysymys5 = new Kysymys("Toiveita/muutoksia tuotevalikoimaan tai kahvilan toimintaan liittyen?", kysely1);
 			repo.save(kysymys1);
 			repo.save(kysymys2);
 			repo.save(kysymys3);
@@ -42,10 +48,11 @@ public class KyselyApplication {
 			vrepo.save(new Vastaus("1,2,3", kysymys3));
 			vrepo.save(new Vastaus("4", kysymys4));
 			vrepo.save(new Vastaus("Hieman halvemmat hinnat ja ystävällisempi asiakaspalvelu.", kysymys5));
+
 			
 			log.info("Fetch all questions");
-			for (Vastaus vastaus : vrepo.findAll()) {
-				log.info(vastaus.toString());
+			for (Kysely kysely : krepo.findAll()) {
+				log.info(kysely.toString());
 			}
 			
 		};

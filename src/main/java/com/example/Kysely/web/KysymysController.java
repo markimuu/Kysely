@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.Kysely.domain.Kysely;
+import com.example.Kysely.domain.KyselyRepository;
 import com.example.Kysely.domain.Kysymys;
 import com.example.Kysely.domain.KysymysRepository;
 import com.example.Kysely.domain.Vastaus;
@@ -27,6 +29,9 @@ public class KysymysController {
 	
 	@Autowired
 	private VastausRepository vrepo;
+	
+	@Autowired
+	private KyselyRepository krepo;
 	
 	// REST Homepage
     @RequestMapping(value="/resthome", method = RequestMethod.GET)
@@ -52,7 +57,7 @@ public class KysymysController {
     	return (List<Kysymys>) repo.findAll();
     }
     
-    //jotain tähän
+    //Sitte alkaa vastaukset
     
     
     // REST Get all answers
@@ -71,6 +76,12 @@ public class KysymysController {
     @RequestMapping(value="/vastaus/{vastausid}", method = RequestMethod.GET)
     public @ResponseBody Optional<Vastaus> findVastausRest(@PathVariable("vastausid") Long vastausid) {	
     	return vrepo.findById(vastausid);
+    }
+    
+    // REST Get all 
+    @RequestMapping(value="/kyselyt", method = RequestMethod.GET)
+    public @ResponseBody List<Kysely> kyselyRest() {	
+        return (List<Kysely>) krepo.findAll();
     }
 	
 }

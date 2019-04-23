@@ -8,10 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Kysymys {
@@ -23,17 +26,23 @@ public class Kysymys {
 	private String kysymys;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
-	@JsonIgnore
+	@JsonBackReference
 	private List<Vastaus> vastaukset;
+	
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name = "kyselyid")
+	private Kysely kysely;
 	
 	
 	public Kysymys() {
 		//yolo
 	}
 	
-	public Kysymys(String kysymys) {
+	public Kysymys(String kysymys, Kysely kysely) {
 		super();
 		this.kysymys = kysymys;
+		this.kysely = kysely;
 	}
 
 	
@@ -61,10 +70,30 @@ public class Kysymys {
 	public void setVastaus(List<Vastaus> vastaukset) {
 		this.vastaukset = vastaukset;
 	}
+	
+
+	public List<Vastaus> getVastaukset() {
+		return vastaukset;
+	}
+
+	public void setVastaukset(List<Vastaus> vastaukset) {
+		this.vastaukset = vastaukset;
+	}
+
+	public Kysely getKysely() {
+		return kysely;
+	}
+
+	public void setKysely(Kysely kysely) {
+		this.kysely = kysely;
+	}
 
 	@Override
 	public String toString() {
-		return "Kysymys [kysymysid=" + kysymysid + ", kysymys=" + kysymys + ", vastaukset=" + vastaukset + "]";
+		return "Kysymys [kysymysid=" + kysymysid + ", kysymys=" + kysymys + ", vastaukset=" + vastaukset + ", kysely="
+				+ kysely + "]";
 	}
+
+	
 	
 }
