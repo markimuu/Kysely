@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Vastaus {
@@ -26,25 +27,24 @@ public class Vastaus {
 	private Kysymys kysymys;
 	
 	@OneToOne
-	@JsonBackReference
+	@JsonManagedReference
 	@JoinColumn(name = "vaihtoehto")
 	private Vaihtoehto vaihtoehto;
 	
-	public Vastaus() {
-		//
-	}
-	
-	
 
-	public Vastaus(long vastausid, String vastaus, Kysymys kysymys, Vaihtoehto vaihtoehto) {
+	public Vastaus() {
 		super();
-		this.vastausid = vastausid;
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public Vastaus(String vastaus, Kysymys kysymys, Vaihtoehto vaihtoehto) {
+		super();
 		this.vastaus = vastaus;
 		this.kysymys = kysymys;
 		this.vaihtoehto = vaihtoehto;
 	}
-
-
 
 	public long getVastausid() {
 		return vastausid;

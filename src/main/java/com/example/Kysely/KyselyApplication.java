@@ -73,7 +73,7 @@ public class KyselyApplication {
 			Vaihtoehto vaihtoehto3_1 = new Vaihtoehto("Text", 1L, kysymys3);
 			vairepo.save(vaihtoehto3_1);
 			
-			//Kysymys 4 vaihtoehdot
+			//Kysymys 4 vaihtoehdot KORJAA DEFINE
 			Vaihtoehto vaihtoehto4_1 = new Vaihtoehto("Radio 1", 1L, kysymys4);
 			Vaihtoehto vaihtoehto4_2 = new Vaihtoehto("Radio 2", 2L, kysymys4);
 			Vaihtoehto vaihtoehto4_3 = new Vaihtoehto("Radio 3", 3L, kysymys4);
@@ -89,8 +89,19 @@ public class KyselyApplication {
 			Vaihtoehto vaihtoehto5_1 = new Vaihtoehto("Text", 1L, kysymys5);
 			vairepo.save(vaihtoehto5_1);
 			
-			log.info("Save 5 answers");
+			log.info("Save Mark's 5 answers");
+			vrepo.save(new Vastaus("Mies", kysymys1, vaihtoehto1_1));
+			vrepo.save(new Vastaus("Opiskelija", kysymys2, vaihtoehto2_1));
+			vrepo.save(new Vastaus("Tee, Leipä, Puuro", kysymys3, vaihtoehto3_1));
+			vrepo.save(new Vastaus("4", kysymys4, vaihtoehto4_1));
+			vrepo.save(new Vastaus("Hieman halvemmat hinnat ja ystävällisempi asiakaspalvelu.", kysymys5, vaihtoehto5_1));
 			
+			log.info("Save Ronis's 5 answers");
+			vrepo.save(new Vastaus("Mies", kysymys1, vaihtoehto1_1));
+			vrepo.save(new Vastaus("Muu", kysymys2, vaihtoehto2_1));
+			vrepo.save(new Vastaus("Novelle vesi", kysymys3, vaihtoehto3_1));
+			vrepo.save(new Vastaus("1", kysymys4, vaihtoehto4_1));
+			vrepo.save(new Vastaus("Ihan jees.", kysymys5, vaihtoehto5_1));
 			
 			log.info("Fetch all questions");
 			for (Vastaus vastaus : vrepo.findAll()) {
