@@ -43,6 +43,14 @@ public class Vaihtoehto {
 		this.vaihtoehto = vaihtoehto;
 		this.kysymys = kysymys;
 	}
+	
+	public long getVaihtoehtoId() {
+		return vaihtoehtoId;
+	}
+
+	public void setVaihtoehtoId(long vaihtoehtoId) {
+		this.vaihtoehtoId = vaihtoehtoId;
+	}
 
 	public long getVaihtoehto() {
 		return vaihtoehto;

@@ -34,10 +34,8 @@ public class KyselyApplication {
 			
 			// Kysely + otsikko ja kuvaus
 			Kysely kysely1 = new Kysely("Haaga-Helian AMK:n Hav-A-Java", "Kyselyn toteuttaa ryhmä Haaga-Helian kolmannen lukuvuoden IT-tradenomiopiskelijoita. Ryhmän tarkoituksena on tutkia Pasilan Haaga-Helian Hav-A-Java -kahvilan käyttäjien kokemuksia, mielipiteitä ja mahdollisia kehitysideoita.");
-			Kysely kysely2 = new Kysely("Haaga-Helian AMK:n Hav-A-Java", "Kyselyn toteuttaa ryhmä Haaga-Helian kolmannen lukuvuoden IT-tradenomiopiskelijoita. Ryhmän tarkoituksena on tutkia Pasilan Haaga-Helian Hav-A-Java -kahvilan käyttäjien kokemuksia, mielipiteitä ja mahdollisia kehitysideoita.");
-			
+						
 			krepo.save(kysely1);
-			krepo.save(kysely2);
 			
 			log.info("Save 5 questions");
 			Kysymys kysymys1 = new Kysymys("Sukupuoli:", kysely1);
@@ -74,11 +72,11 @@ public class KyselyApplication {
 			vairepo.save(vaihtoehto3_1);
 			
 			//Kysymys 4 vaihtoehdot KORJAA DEFINE
-			Vaihtoehto vaihtoehto4_1 = new Vaihtoehto("Radio 1", 1L, kysymys4);
-			Vaihtoehto vaihtoehto4_2 = new Vaihtoehto("Radio 2", 2L, kysymys4);
-			Vaihtoehto vaihtoehto4_3 = new Vaihtoehto("Radio 3", 3L, kysymys4);
-			Vaihtoehto vaihtoehto4_4 = new Vaihtoehto("Radio 4", 4L, kysymys4);
-			Vaihtoehto vaihtoehto4_5 = new Vaihtoehto("Radio 5", 5L, kysymys4);
+			Vaihtoehto vaihtoehto4_1 = new Vaihtoehto("Halpa", 1L, kysymys4);
+			Vaihtoehto vaihtoehto4_2 = new Vaihtoehto("Normaalia halvempi", 2L, kysymys4);
+			Vaihtoehto vaihtoehto4_3 = new Vaihtoehto("Normaali", 3L, kysymys4);
+			Vaihtoehto vaihtoehto4_4 = new Vaihtoehto("Normaalia kalliimpi", 4L, kysymys4);
+			Vaihtoehto vaihtoehto4_5 = new Vaihtoehto("Kallis", 5L, kysymys4);
 			vairepo.save(vaihtoehto4_1);
 			vairepo.save(vaihtoehto4_2);
 			vairepo.save(vaihtoehto4_3);
@@ -96,7 +94,7 @@ public class KyselyApplication {
 			vrepo.save(new Vastaus("4", kysymys4, vaihtoehto4_1));
 			vrepo.save(new Vastaus("Hieman halvemmat hinnat ja ystävällisempi asiakaspalvelu.", kysymys5, vaihtoehto5_1));
 			
-			log.info("Save Ronis's 5 answers");
+			log.info("Save Roni's 5 answers");
 			vrepo.save(new Vastaus("Mies", kysymys1, vaihtoehto1_1));
 			vrepo.save(new Vastaus("Muu", kysymys2, vaihtoehto2_1));
 			vrepo.save(new Vastaus("Novelle vesi", kysymys3, vaihtoehto3_1));
