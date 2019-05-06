@@ -22,7 +22,9 @@ public class Vaihtoehto {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="vaihtoehtoId", nullable=false, updatable=false)
 	private long vaihtoehtoId;
-	private String vaihtoehto;
+	private String vaihtoehtoText;
+	private long vaihtoehto;
+	
 	
 	@ManyToOne
 	@JsonBackReference
@@ -34,28 +36,27 @@ public class Vaihtoehto {
 		//112
 	}
 
-	public Vaihtoehto(String vaihtoehto, Kysymys kysymys) {
+	public Vaihtoehto(String vaihtoehtoText, long vaihtoehto, Kysymys kysymys) {
 		super();
+		this.vaihtoehtoText = vaihtoehtoText;
 		this.vaihtoehto = vaihtoehto;
 		this.kysymys = kysymys;
 	}
 
-	public Long getVaihtoehtoId() {
-		return vaihtoehtoId;
-	}
-
-	public void setVaihtoehtoId(long vaihtoehtoId) {
-		this.vaihtoehtoId = vaihtoehtoId;
-	}
-
-	
-
-	public String getVaihtoehto() {
+	public long getVaihtoehto() {
 		return vaihtoehto;
 	}
 
-	public void setVaihtoehto(String vaihtoehto) {
+	public void setVaihtoehto(long vaihtoehto) {
 		this.vaihtoehto = vaihtoehto;
+	}
+
+	public String getVaihtoehtoText() {
+		return vaihtoehtoText;
+	}
+
+	public void setVaihtoehtoText(String vaihtoehtoText) {
+		this.vaihtoehtoText = vaihtoehtoText;
 	}
 
 	public Kysymys getKysymys() {
@@ -68,8 +69,8 @@ public class Vaihtoehto {
 
 	@Override
 	public String toString() {
-		return "Vaihtoehto [vaihtoehtoId=" + vaihtoehtoId + ", vaihtoehto=" + vaihtoehto + ", kysymys=" + kysymys + "]";
+		return "Vaihtoehto [vaihtoehtoId=" + vaihtoehtoId + ", vaihtoehto=" + vaihtoehto + ", vaihtoehtoText="
+				+ vaihtoehtoText + ", kysymys=" + kysymys + "]";
 	}
-
 
 }

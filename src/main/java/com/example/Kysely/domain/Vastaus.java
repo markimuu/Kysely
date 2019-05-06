@@ -7,9 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Vastaus {
@@ -25,16 +25,26 @@ public class Vastaus {
 	@JoinColumn(name = "kysymysid")
 	private Kysymys kysymys;
 	
+	@OneToOne
+	@JsonBackReference
+	@JoinColumn(name = "vaihtoehto")
+	private Vaihtoehto vaihtoehto;
+	
 	public Vastaus() {
 		//
 	}
 	
+	
 
-	public Vastaus(String vastaus, Kysymys kysymys) {
+	public Vastaus(long vastausid, String vastaus, Kysymys kysymys, Vaihtoehto vaihtoehto) {
 		super();
+		this.vastausid = vastausid;
 		this.vastaus = vastaus;
 		this.kysymys = kysymys;
+		this.vaihtoehto = vaihtoehto;
 	}
+
+
 
 	public long getVastausid() {
 		return vastausid;
@@ -56,11 +66,17 @@ public class Vastaus {
 		return kysymys;
 	}
 
-
 	public void setKysymys(Kysymys kysymys) {
 		this.kysymys = kysymys;
 	}
 
+	public Vaihtoehto getVaihtoehto() {
+		return vaihtoehto;
+	}
+
+	public void setVaihtoehto(Vaihtoehto vaihtoehto) {
+		this.vaihtoehto = vaihtoehto;
+	}
 
 	@Override
 	public String toString() {
