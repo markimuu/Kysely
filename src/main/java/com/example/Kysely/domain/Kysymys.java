@@ -14,7 +14,6 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -35,10 +34,7 @@ public class Kysymys {
 	@JsonIgnore
 	@JoinColumn(name = "kyselyid")
 	private Kysely kysely;
-
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
-	@JsonManagedReference
-	private List<Vaihtoehto> vaihtoehdot;
+	
 	
 	public Kysymys() {
 		//yolo
@@ -99,6 +95,7 @@ public class Kysymys {
 	public void setKysely(Kysely kysely) {
 		this.kysely = kysely;
 	}
+<<<<<<< HEAD
 	
 	public List<Vaihtoehto> getVaihtoehdot() {
 		return vaihtoehdot;
@@ -116,6 +113,8 @@ public class Kysymys {
 	public void setKystyyppi(String kystyyppi) {
 		this.kystyyppi = kystyyppi;
 	}
+=======
+>>>>>>> parent of 8bc294c... Hyvää vappua t. Mark
 
 	@Override
 	public String toString() {

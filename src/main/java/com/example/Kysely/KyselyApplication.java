@@ -1,8 +1,5 @@
 package com.example.Kysely;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -14,8 +11,6 @@ import com.example.Kysely.domain.Kysely;
 import com.example.Kysely.domain.KyselyRepository;
 import com.example.Kysely.domain.Kysymys;
 import com.example.Kysely.domain.KysymysRepository;
-import com.example.Kysely.domain.Vaihtoehto;
-import com.example.Kysely.domain.VaihtoehtoRepository;
 import com.example.Kysely.domain.Vastaus;
 import com.example.Kysely.domain.VastausRepository;
 
@@ -29,7 +24,7 @@ public class KyselyApplication {
 	}
 
 	@Bean
-	public CommandLineRunner kyselyDemo(KysymysRepository repo, VastausRepository vrepo, KyselyRepository krepo, VaihtoehtoRepository vairepo) {
+	public CommandLineRunner kyselyDemo(KysymysRepository repo, VastausRepository vrepo, KyselyRepository krepo) {
 		return (args) -> {
 			
 			/* {
@@ -53,6 +48,7 @@ public class KyselyApplication {
 						
 			krepo.save(kysely1);
 			
+			
 			log.info("Save 5 questions");
 			Kysymys kysymys1 = new Kysymys("Sukupuoli:", kysely1, "Radiobutton");
 			Kysymys kysymys2 = new Kysymys("Status:", kysely1, "Radiobutton");
@@ -65,6 +61,7 @@ public class KyselyApplication {
 			repo.save(kysymys4);
 			repo.save(kysymys5);
 			
+<<<<<<< HEAD
 			//Kysymys 1 vaihtoehdot
 			Vaihtoehto vaihtoehto1_1 = new Vaihtoehto("Mies", 1L, kysymys1);
 			Vaihtoehto vaihtoehto1_2 = new Vaihtoehto("Nainen", 2L, kysymys1);
@@ -116,6 +113,15 @@ public class KyselyApplication {
 			vrepo.save(new Vastaus("Novelle vesi", kysymys3, null));
 			vrepo.save(new Vastaus(null, kysymys4, vaihtoehto4_1));
 			vrepo.save(new Vastaus("Ihan jees.", kysymys5, null));
+=======
+			log.info("Save 5 answers");
+			vrepo.save(new Vastaus("Mies", kysymys1));
+			vrepo.save(new Vastaus("Opiskelija", kysymys2));
+			vrepo.save(new Vastaus("1,2,3", kysymys3));
+			vrepo.save(new Vastaus("4", kysymys4));
+			vrepo.save(new Vastaus("Hieman halvemmat hinnat ja ystävällisempi asiakaspalvelu.", kysymys5));
+
+>>>>>>> parent of 8bc294c... Hyvää vappua t. Mark
 			
 			log.info("Fetch all questions");
 			for (Vastaus vastaus : vrepo.findAll()) {
