@@ -25,9 +25,10 @@ public class Kysymys {
 	@Column(name="kysymysid", nullable = false, updatable = false)
 	private long kysymysid;
 	private String kysymys;
+	private String kystyyppi; //tekstikysymys, radioButtonkysymys
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
-	@JsonBackReference
+	@JsonManagedReference //!
 	private List<Vastaus> vastaukset;
 	
 	@ManyToOne
@@ -47,6 +48,13 @@ public class Kysymys {
 		super();
 		this.kysymys = kysymys;
 		this.kysely = kysely;
+	}
+	
+	public Kysymys(String kysymys, Kysely kysely, String kystyyppi) {
+		super();
+		this.kysymys = kysymys;
+		this.kysely = kysely;
+		this.kystyyppi = kystyyppi; 
 	}
 
 	
@@ -98,6 +106,15 @@ public class Kysymys {
 
 	public void setVaihtoehdot(List<Vaihtoehto> vaihtoehdot) {
 		this.vaihtoehdot = vaihtoehdot;
+	}
+	
+
+	public String getKystyyppi() {
+		return kystyyppi;
+	}
+
+	public void setKystyyppi(String kystyyppi) {
+		this.kystyyppi = kystyyppi;
 	}
 
 	@Override

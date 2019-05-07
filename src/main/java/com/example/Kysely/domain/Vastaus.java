@@ -22,7 +22,7 @@ public class Vastaus {
 	private String vastaus;
 
 	@ManyToOne
-	@JsonBackReference
+	@JsonManagedReference //!
 	@JoinColumn(name = "kysymysid")
 	private Kysymys kysymys;
 	

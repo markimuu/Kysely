@@ -32,17 +32,33 @@ public class KyselyApplication {
 	public CommandLineRunner kyselyDemo(KysymysRepository repo, VastausRepository vrepo, KyselyRepository krepo, VaihtoehtoRepository vairepo) {
 		return (args) -> {
 			
+			/* {
+		    "vastaus": "Tee, Leipä, Puuro",
+		    "kysymys": {
+		    	"kysymysid": 3
+		    }
+		  } */
+			
+			/*   {
+            "vaihtoehto": {
+              "vaihtoehtoId": 1
+           },
+           "kysymys":{
+           	"kysymysid": 1
+           }
+    	  } */
+			
 			// Kysely + otsikko ja kuvaus
 			Kysely kysely1 = new Kysely("Haaga-Helian AMK:n Hav-A-Java", "Kyselyn toteuttaa ryhmä Haaga-Helian kolmannen lukuvuoden IT-tradenomiopiskelijoita. Ryhmän tarkoituksena on tutkia Pasilan Haaga-Helian Hav-A-Java -kahvilan käyttäjien kokemuksia, mielipiteitä ja mahdollisia kehitysideoita.");
 						
 			krepo.save(kysely1);
 			
 			log.info("Save 5 questions");
-			Kysymys kysymys1 = new Kysymys("Sukupuoli:", kysely1);
-			Kysymys kysymys2 = new Kysymys("Status:", kysely1);
-			Kysymys kysymys3 = new Kysymys("Kerro yleisimmät ostoksesi:", kysely1);
-			Kysymys kysymys4 = new Kysymys("Mitä mieltä olet hintatasosta?", kysely1);
-			Kysymys kysymys5 = new Kysymys("Toiveita/muutoksia tuotevalikoimaan tai kahvilan toimintaan liittyen?", kysely1);
+			Kysymys kysymys1 = new Kysymys("Sukupuoli:", kysely1, "Radiobutton");
+			Kysymys kysymys2 = new Kysymys("Status:", kysely1, "Radiobutton");
+			Kysymys kysymys3 = new Kysymys("Kerro yleisimmät ostoksesi:", kysely1, "Tekstikysymys");
+			Kysymys kysymys4 = new Kysymys("Mitä mieltä olet hintatasosta?", kysely1, "Radiobutton");
+			Kysymys kysymys5 = new Kysymys("Toiveita/muutoksia tuotevalikoimaan tai kahvilan toimintaan liittyen?", kysely1, "Tekstikysymys");
 			repo.save(kysymys1);
 			repo.save(kysymys2);
 			repo.save(kysymys3);
@@ -68,8 +84,8 @@ public class KyselyApplication {
 			vairepo.save(vaihtoehto2_4);
 			
 			//Kysymys 3 vaihtoehdot
-			Vaihtoehto vaihtoehto3_1 = new Vaihtoehto("Text", 1L, kysymys3);
-			vairepo.save(vaihtoehto3_1);
+			//Vaihtoehto vaihtoehto3_1 = new Vaihtoehto("Text", 1L, kysymys3);
+			//vairepo.save(vaihtoehto3_1);
 			
 			//Kysymys 4 vaihtoehdot KORJAA DEFINE
 			Vaihtoehto vaihtoehto4_1 = new Vaihtoehto("Halpa", 1L, kysymys4);
@@ -88,18 +104,18 @@ public class KyselyApplication {
 			vairepo.save(vaihtoehto5_1);
 			
 			log.info("Save Mark's 5 answers");
-			vrepo.save(new Vastaus("Mies", kysymys1, vaihtoehto1_1));
-			vrepo.save(new Vastaus("Opiskelija", kysymys2, vaihtoehto2_1));
-			vrepo.save(new Vastaus("Tee, Leipä, Puuro", kysymys3, vaihtoehto3_1));
-			vrepo.save(new Vastaus("4", kysymys4, vaihtoehto4_1));
-			vrepo.save(new Vastaus("Hieman halvemmat hinnat ja ystävällisempi asiakaspalvelu.", kysymys5, vaihtoehto5_1));
+			vrepo.save(new Vastaus(null, kysymys1, vaihtoehto1_1)); //radiobutton vastaus
+			vrepo.save(new Vastaus(null, kysymys2, vaihtoehto2_1));
+			vrepo.save(new Vastaus("Tee, Leipä, Puuro", kysymys3, null)); //teksivastaus
+			vrepo.save(new Vastaus(null, kysymys4, vaihtoehto4_1));
+			vrepo.save(new Vastaus("Hieman halvemmat hinnat ja ystävällisempi asiakaspalvelu.", kysymys5, null));
 			
 			log.info("Save Roni's 5 answers");
-			vrepo.save(new Vastaus("Mies", kysymys1, vaihtoehto1_1));
-			vrepo.save(new Vastaus("Muu", kysymys2, vaihtoehto2_1));
-			vrepo.save(new Vastaus("Novelle vesi", kysymys3, vaihtoehto3_1));
-			vrepo.save(new Vastaus("1", kysymys4, vaihtoehto4_1));
-			vrepo.save(new Vastaus("Ihan jees.", kysymys5, vaihtoehto5_1));
+			vrepo.save(new Vastaus(null, kysymys1, vaihtoehto1_1));
+			vrepo.save(new Vastaus(null, kysymys2, vaihtoehto2_1));
+			vrepo.save(new Vastaus("Novelle vesi", kysymys3, null));
+			vrepo.save(new Vastaus(null, kysymys4, vaihtoehto4_1));
+			vrepo.save(new Vastaus("Ihan jees.", kysymys5, null));
 			
 			log.info("Fetch all questions");
 			for (Vastaus vastaus : vrepo.findAll()) {

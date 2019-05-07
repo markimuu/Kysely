@@ -9,6 +9,6 @@ public interface VaihtoehtoRepository extends CrudRepository<Vaihtoehto, Long>{
 	
 	List<Vaihtoehto> findByVaihtoehtoId(long vaihtoehtoId);
 	List<Vaihtoehto> findByVaihtoehtoText(String vaihtoehtoText);
-	List<Vaihtoehto> findByVaihtoehto(long vaihtoehto);
+	List<Vaihtoehto> findByJarjestusnumero(long jarjestusnumero);
 
 }

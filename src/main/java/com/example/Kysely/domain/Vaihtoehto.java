@@ -23,9 +23,7 @@ public class Vaihtoehto {
 	@Column(name="vaihtoehtoId", nullable=false, updatable=false)
 	private long vaihtoehtoId;
 	private String vaihtoehtoText;
-	private long vaihtoehto;
-	
-	
+	private long jarjestusnumero;
 	
 	@ManyToOne
 	@JsonBackReference
@@ -37,10 +35,10 @@ public class Vaihtoehto {
 		//112
 	}
 
-	public Vaihtoehto(String vaihtoehtoText, long vaihtoehto, Kysymys kysymys) {
+	public Vaihtoehto(String vaihtoehtoText, long jarjestusnumero, Kysymys kysymys) {
 		super();
 		this.vaihtoehtoText = vaihtoehtoText;
-		this.vaihtoehto = vaihtoehto;
+		this.jarjestusnumero = jarjestusnumero;
 		this.kysymys = kysymys;
 	}
 	
@@ -52,12 +50,12 @@ public class Vaihtoehto {
 		this.vaihtoehtoId = vaihtoehtoId;
 	}
 
-	public long getVaihtoehto() {
-		return vaihtoehto;
+	public long getJarjestusnumero() {
+		return jarjestusnumero;
 	}
 
-	public void setVaihtoehto(long vaihtoehto) {
-		this.vaihtoehto = vaihtoehto;
+	public void setJarjestusnumero(long jarjestusnumero) {
+		this.jarjestusnumero = jarjestusnumero;
 	}
 
 	public String getVaihtoehtoText() {
@@ -78,7 +76,7 @@ public class Vaihtoehto {
 
 	@Override
 	public String toString() {
-		return "Vaihtoehto [vaihtoehtoId=" + vaihtoehtoId + ", vaihtoehto=" + vaihtoehto + ", vaihtoehtoText="
+		return "Vaihtoehto [vaihtoehtoId=" + vaihtoehtoId + ", jarjestusnumero=" + jarjestusnumero + ", vaihtoehtoText="
 				+ vaihtoehtoText + ", kysymys=" + kysymys + "]";
 	}
 
