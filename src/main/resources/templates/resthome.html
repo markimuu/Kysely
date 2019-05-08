@@ -10,8 +10,8 @@
 
 	<h2>Kaikki Kysymykset</h2>
 	<p>
-		<strong>Method:</strong> GET <strong>Endpoint:</strong> <strong><a
-			href="/kysymykset">/kysymykset</a></strong>
+		<strong>Method:</strong> GET <strong>Endpoint:</strong>
+		<strong><a href="/kysymykset">/kysymykset</a></strong>
 	</p>
 	<p>
 		<strong>JSON Esimerkki:</strong>
@@ -39,8 +39,8 @@
 
 	<h2>Kysymys Id :llä</h2>
 	<p>
-		<strong>GET </strong><strong> /kysymys/{id} </strong> <strong>
-		<a href="/kysymys/2">/kysymys/2</a></strong>
+		<strong>Method: </strong> GET <strong>Endpoint:</strong>
+		<strong><a href="/kysymys/2">/kysymys/2</a></strong>
 	</p>
 	<p>
 		<strong>JSON Esimerkki:</strong>
@@ -87,8 +87,8 @@
 
 	<h2>Uusi Kysymys</h2>
 	<p>
-		<strong>Method:</strong> POST <strong> /kysymykset</strong> (Kokeile
-		<a href="https://www.getpostman.com/" target="_blank">Postmänillä</a>/jne.)
+		<strong>Method:</strong> POST <strong>Endpoint: /kysymykset</strong> 
+		(Kokeile <a href="https://www.getpostman.com/" target="_blank">Postmänillä</a>/jne.)
 	</p>
 	<p>
 		<strong>JSON Esimerkki:</strong>
@@ -104,8 +104,8 @@
 	
 	<h2>Kaikki Vastaukset</h2>
 	<p>
-		<strong>Method:</strong> GET <strong>Endpoint:</strong> <strong><a
-			href="/vastaukset">/vastaukset</a></strong>
+		<strong>Method:</strong> GET <strong>Endpoint:</strong>
+		<strong><a href="/vastaukset">/vastaukset</a></strong>
 	</p>
 	<p>
 		<strong>JSON Esimerkki:</strong>
@@ -130,23 +130,23 @@
 
 	<h2>Vastaus Id :llä</h2>
 	<p>
-		<strong>GET </strong><strong> /vastaus/{id} </strong> <strong>
-		<a href="/vastaus/2">/vastaus/2</a></strong>
+		<strong>Method: </strong> GET <strong>Endpoint:</strong>
+		<strong><a href="/vastaus/2">/vastaus/2</a></strong>
 	</p>
 	<p>
 		<strong>JSON Esimerkki:</strong>
 	</p>
 	
 	<pre><code>	{
-  "vastausid": 3,
-  "vastausteksti": "Kahvi, tee, kaakao",
-  "vaihtoehto": null
+	"vastausid": 3,
+	"vastausteksti": "Kahvi, tee, kaakao",
+	"vaihtoehto": null
 	}	</code></pre>
 	
 	<h2>Uusi Vastaus (EI TOIMI)</h2>
 	<p>
-		<strong>Method:</strong> POST <strong> /vastaukset</strong> (Kokeile
-		<a href="https://www.getpostman.com/" target="_blank">Postmänillä</a>/jne.)
+		<strong>Method:</strong> POST <strong>Endpoint: /vastaukset</strong> 
+		(Kokeile <a href="https://www.getpostman.com/" target="_blank">Postmänillä</a>/jne.)
 	</p>
 	<p>
 		<strong>JSON Esimerkki:</strong>
@@ -160,5 +160,39 @@
     		"kysymysid": 1
     		}
 	}	</code></pre>
+	
+	<h2>Kaikki Kyselyt</h2>
+	<p>
+		<strong>Method:</strong> GET <strong>Endpoint:</strong> 
+		<strong><a href="/kyselyt">/kyselyt</a></strong>
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	<pre><code>ESIMERKKI LIIAN PITKÄ MENKÄÄ ITE KATTOO LINKIN KAUTTA</code></pre>
+	
+	<h2>Kysely Id :llä</h2>
+	<p>
+		<strong>Method: </strong> GET <strong> Endpoint: </strong>
+		<strong><a href="/kysely/1">/kysely/1</a></strong>
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	<pre><code>ESIMERKKI LIIAN PITKÄ MENKÄÄ ITE KATTOO LINKIN KAUTTA</code></pre>
+	
+		<h2>Uusi Kysely</h2>
+	<p>
+		<strong>Method:</strong> POST <strong>Endpoint: /kyselyt</strong> 
+		(Kokeile <a href="https://www.getpostman.com/" target="_blank">Postmänillä</a>/jne.)
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	<pre><code>	{ 
+	"otsikko": "Uusi kysely",
+	"kuvaus": "esimerkki kuvaus uudelle kyselylle"
+	}	</code></pre>
+	
     </body>
 </html>

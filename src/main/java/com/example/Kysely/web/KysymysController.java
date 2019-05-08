@@ -36,9 +36,10 @@ public class KysymysController {
 	// REST Homepage
     @RequestMapping(value="/resthome", method = RequestMethod.GET)
     public String resthomeList() {	
-        return "resthome";
+        return "resthome";   
     }
     
+    //Tästä alkaa kysymys controllerit 
     // REST Save new question 
     @RequestMapping(value="/kysymykset", method = RequestMethod.POST)
     public @ResponseBody Kysymys addKysymysRest(@RequestBody Kysymys kysymys) {	
@@ -57,9 +58,8 @@ public class KysymysController {
     	return (List<Kysymys>) repo.findAll();
     }
     
-    //Sitte alkaa vastaukset
-    
-    
+  
+    //Tästä alkaa vastaus controllerit 
     // REST Get all answers
     @RequestMapping(value="/vastaukset", method = RequestMethod.GET)
     public @ResponseBody List<Vastaus> vastausRest() {	
@@ -79,8 +79,8 @@ public class KysymysController {
     }
     
     
-    // kyselyt kake
-    
+   
+    //Tästä alkaa kysely controllerit 
     // REST Get all polls
     @RequestMapping(value="/kyselyt", method = RequestMethod.GET)
     public @ResponseBody List<Kysely> kyselyRest() {	
