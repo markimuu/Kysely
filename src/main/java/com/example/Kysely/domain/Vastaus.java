@@ -1,5 +1,6 @@
 package com.example.Kysely.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,9 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Vastaus {
@@ -18,22 +20,34 @@ public class Vastaus {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="vastausid", nullable = false, updatable = false)
 	private long vastausid;
-	private String vastaus;
+	private String vastausteksti;
 
 	@ManyToOne
-	@JsonBackReference
+	@JsonBackReference(value = "kysymykset")
 	@JoinColumn(name = "kysymysid")
 	private Kysymys kysymys;
 	
+	@OneToOne
+	@JsonManagedReference(value = "vaihtoehtovastaus")
+	@JoinColumn(name = "vaihtoehtoid")
+	private Vaihtoehto vaihtoehto;
+	
 	public Vastaus() {
+		super();
 		//
 	}
 	
-
-	public Vastaus(String vastaus, Kysymys kysymys) {
+	/* public Vastaus(Vaihtoehto vaihtoehto, Kysymys kysymys) {
 		super();
-		this.vastaus = vastaus;
+		this.vaihtoehto = vaihtoehto;
 		this.kysymys = kysymys;
+	} */
+
+	public Vastaus(String vastaus, Kysymys kysymys, Vaihtoehto vaihtoehto) {
+		super();
+		this.vastausteksti = vastaus;
+		this.kysymys = kysymys;
+		this.vaihtoehto = vaihtoehto;
 	}
 
 	public long getVastausid() {
@@ -44,12 +58,12 @@ public class Vastaus {
 		this.vastausid = vastausid;
 	}
 
-	public String getVastaus() {
-		return vastaus;
+	public String getVastausteksti() {
+		return vastausteksti;
 	}
 
-	public void setVastaus(String vastaus) {
-		this.vastaus = vastaus;
+	public void setVastausteksti(String vastausteksti) {
+		this.vastausteksti = vastausteksti;
 	}
 	
 	public Kysymys getKysymys() {
@@ -60,11 +74,19 @@ public class Vastaus {
 	public void setKysymys(Kysymys kysymys) {
 		this.kysymys = kysymys;
 	}
+	
 
+	public Vaihtoehto getVaihtoehto() {
+		return vaihtoehto;
+	}
+
+	public void setVaihtoehto(Vaihtoehto vaihtoehto) {
+		this.vaihtoehto = vaihtoehto;
+	}
 
 	@Override
 	public String toString() {
-		return "Vastaus [vastausid=" + vastausid + ", vastaus=" + vastaus + "]";
+		return "Vastaus [vastausid=" + vastausid + ", vastausteksti=" + vastausteksti + "]";
 	}
 
 	

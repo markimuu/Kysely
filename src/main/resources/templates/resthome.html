@@ -16,16 +16,26 @@
 	<p>
 		<strong>JSON Esimerkki:</strong>
 	</p>
-	<pre><code>[
-	{
-	"kysymys": "Sukupuoli:",
-	"kysymysid": 1
-	},
-	{
-	"kysymys": "Status:",
-	"kysymysid": 2
-	}
-]	</code></pre>
+	<pre><code>      {
+    "kysymysid": 1,
+    "kysymys": "Sukupuoli:",
+    "kysymystyyppi": "Radiobutton",
+    "vaihtoehdot": [
+      {
+        "vaihtoehtoId": 1,
+        "vaihtoehto": "Mies",
+        "jarjestusnumero": 1
+      },
+      {
+        "vaihtoehtoId": 2,
+        "vaihtoehto": "Nainen",
+        "jarjestusnumero": 2
+      },
+      {
+        "vaihtoehtoId": 3,
+        "vaihtoehto": "Muu",
+        "jarjestusnumero": 3
+      }	</code></pre>
 
 	<h2>Kysymys Id :llä</h2>
 	<p>
@@ -37,9 +47,43 @@
 	</p>
 	
 	<pre><code>	{
-	"kysymys": "Status:",
-	"kysymysid": 2
-	}	</code></pre>
+  "kysymysid": 2,
+  "kysymys": "Status:",
+  "kysymystyyppi": "Selectbox",
+  "vaihtoehdot": [
+    {
+      "vaihtoehtoId": 4,
+      "vaihtoehto": "Opiskelija",
+      "jarjestusnumero": 1
+    },
+    {
+      "vaihtoehtoId": 5,
+      "vaihtoehto": "Henkilökunta",
+      "jarjestusnumero": 2
+    },
+    {
+      "vaihtoehtoId": 6,
+      "vaihtoehto": "Opettaja",
+      "jarjestusnumero": 3
+    },
+    {
+      "vaihtoehtoId": 7,
+      "vaihtoehto": "Muu",
+      "jarjestusnumero": 4
+    }
+  ],
+  "vastaus": [
+    {
+      "vastausid": 2,
+      "vastausteksti": null,
+      "vaihtoehto": {
+        "vaihtoehtoId": 4,
+        "vaihtoehto": "Opiskelija",
+        "jarjestusnumero": 1
+      }
+    }
+  ]
+}	</code></pre>
 
 	<h2>Uusi Kysymys</h2>
 	<p>
@@ -50,8 +94,13 @@
 		<strong>JSON Esimerkki:</strong>
 	</p>
 	<pre><code>	{
-	"kysymys": "Lempivärisi:"
-	}	</code></pre>
+	
+	"kysymys": "Lempivärisi:",
+	"kysymystyyppi": "Tekstikysymys",
+	"kysely": {
+		"kyselyid": 1
+	}
+	}</code></pre>
 	
 	<h2>Kaikki Vastaukset</h2>
 	<p>
@@ -61,16 +110,23 @@
 	<p>
 		<strong>JSON Esimerkki:</strong>
 	</p>
-	<pre><code>[
-	{
-	"vastausid": 1,
-	"vastaus": "Mies"
-	},
-	{
-	"vastausid": 2,
-	"vastaus": "Opettaja"
-	}
-]	</code></pre>
+	<pre><code>    {
+    "vastausid": 1,
+    "vastausteksti": null,
+    "vaihtoehto": {
+      "vaihtoehtoId": 1,
+      "vaihtoehto": "Mies",
+      "jarjestusnumero": 1
+    }
+  },
+  {
+    "vastausid": 2,
+    "vastausteksti": null,
+    "vaihtoehto": {
+      "vaihtoehtoId": 4,
+      "vaihtoehto": "Opiskelija",
+      "jarjestusnumero": 1
+    }</code></pre>
 
 	<h2>Vastaus Id :llä</h2>
 	<p>
@@ -82,11 +138,12 @@
 	</p>
 	
 	<pre><code>	{
-	"vastausid": 2,
-	"vastaus": "Opiskelija"
+  "vastausid": 3,
+  "vastausteksti": "Kahvi, tee, kaakao",
+  "vaihtoehto": null
 	}	</code></pre>
 	
-	<h2>Uusi Vastaus</h2>
+	<h2>Uusi Vastaus (EI TOIMI)</h2>
 	<p>
 		<strong>Method:</strong> POST <strong> /vastaukset</strong> (Kokeile
 		<a href="https://www.getpostman.com/" target="_blank">Postmänillä</a>/jne.)
@@ -95,7 +152,10 @@
 		<strong>JSON Esimerkki:</strong>
 	</p>
 	<pre><code>	{
-	"vastaus": "Muu",
+	"vaihtoehto": {
+		"vaihtoehto": "JokuMuu",
+		"jarjestusnumero": 4
+	},
     	"kysymys": {
     		"kysymysid": 1
     		}

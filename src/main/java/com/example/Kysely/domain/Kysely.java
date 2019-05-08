@@ -22,19 +22,22 @@ public class Kysely {
 	@Column(name="kyselyid", nullable = false, updatable = false)
 	private long kyselyid;
 	private String otsikko;
+	private String kuvaus;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysely")
-	@JsonManagedReference
+	@JsonManagedReference(value = "kysymykset")
 	private List<Kysymys> kysymykset;
 	
 	
 	public Kysely() {
+		super();
 		//yolo
 	}
 	
-	public Kysely(String otsikko) {
+	public Kysely(String otsikko, String kuvaus) {
 		super();
 		this.otsikko = otsikko;
+		this.kuvaus = kuvaus;
 	}
 
 	
@@ -60,6 +63,15 @@ public class Kysely {
 
 	public void setOtsikko(String otsikko) {
 		this.otsikko = otsikko;
+	}
+	
+
+	public String getKuvaus() {
+		return kuvaus;
+	}
+
+	public void setKuvaus(String kuvaus) {
+		this.kuvaus = kuvaus;
 	}
 
 	@Override

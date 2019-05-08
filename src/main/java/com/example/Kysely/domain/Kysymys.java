@@ -25,13 +25,14 @@ public class Kysymys {
 	@Column(name="kysymysid", nullable = false, updatable = false)
 	private long kysymysid;
 	private String kysymys;
+	private String kysymystyyppi;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
 	@JsonBackReference
 	private List<Vastaus> vastaukset;
 	
 	@ManyToOne
-	@JsonIgnore
+	@JsonBackReference(value = "kysymykset")
 	@JoinColumn(name = "kyselyid")
 	private Kysely kysely;
 
@@ -40,13 +41,15 @@ public class Kysymys {
 	private List<Vaihtoehto> vaihtoehdot;
 	
 	public Kysymys() {
+		super();
 		//yolo
 	}
 	
-	public Kysymys(String kysymys, Kysely kysely) {
+	public Kysymys(String kysymys, Kysely kysely, String kysymystyyppi) {
 		super();
 		this.kysymys = kysymys;
 		this.kysely = kysely;
+		this.kysymystyyppi = kysymystyyppi;
 	}
 
 	
@@ -98,6 +101,16 @@ public class Kysymys {
 
 	public void setVaihtoehdot(List<Vaihtoehto> vaihtoehdot) {
 		this.vaihtoehdot = vaihtoehdot;
+	}
+	
+	
+
+	public String getKysymystyyppi() {
+		return kysymystyyppi;
+	}
+
+	public void setKysymystyyppi(String kysymysTyyppi) {
+		this.kysymystyyppi = kysymysTyyppi;
 	}
 
 	@Override
