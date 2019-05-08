@@ -24,7 +24,7 @@ public class Vaihtoehto {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="vaihtoehtoId", nullable=false, updatable=false)
-	private long vaihtoehtoid;
+	private Long vaihtoehtoId;
 	private String vaihtoehto;
 	private long jarjestusnumero;
 	
@@ -43,23 +43,27 @@ public class Vaihtoehto {
 		//112
 	}
 
-	public Vaihtoehto(String vaihtoehtoText, long jarjestusnumero, Kysymys kysymys) {
+	public Vaihtoehto(String vaihtoehto, Kysymys kysymys, long jarjestusnumero) {
 		super();
-		this.jarjestusnumero = jarjestusnumero;
+		this.vaihtoehto = vaihtoehto;
 		this.kysymys = kysymys;
 		this.jarjestusnumero = jarjestusnumero;
 	}
-	
-	public long getVaihtoehtoId() {
-		return vaihtoehtoid;
+
+	public Long getVaihtoehtoId() {
+		return vaihtoehtoId;
 	}
 
 	public void setVaihtoehtoId(Long vaihtoehtoId) {
-		this.vaihtoehtoid = vaihtoehtoId;
+		this.vaihtoehtoId = vaihtoehtoId;
 	}
 
-	public long getJarjestusnumero() {
-		return jarjestusnumero;
+	public String getVaihtoehto() {
+		return vaihtoehto;
+	}
+
+	public void setVaihtoehto(String vaihtoehto) {
+		this.vaihtoehto = vaihtoehto;
 	}
 
 	public Kysymys getKysymys() {
@@ -70,9 +74,18 @@ public class Vaihtoehto {
 		this.kysymys = kysymys;
 	}
 
+	public long getJarjestusnumero() {
+		return jarjestusnumero;
+	}
 
 	public void setJarjestusnumero(long jarjestusnumero) {
 		this.jarjestusnumero = jarjestusnumero;
 	}
+
+	@Override
+	public String toString() {
+		return "Vaihtoehto [vaihtoehtoId=" + vaihtoehtoId + ", vaihtoehto=" + vaihtoehto + ", kysymys=" + kysymys + "]";
+	}
+
 
 }

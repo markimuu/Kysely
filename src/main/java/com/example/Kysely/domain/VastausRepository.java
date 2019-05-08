@@ -9,5 +9,4 @@ public interface VastausRepository extends CrudRepository<Vastaus, Long> {
     List<Vastaus> findByVastausid(long vastausid);
     List<Vastaus> findByVastausteksti(String vastausteksti);
     
-    
 }

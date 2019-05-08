@@ -23,10 +23,7 @@ public class Vastaus {
 	private String vastausteksti;
 
 	@ManyToOne
-
 	@JsonBackReference(value = "kysymykset")
-
-	@JsonManagedReference 
 	@JoinColumn(name = "kysymysid")
 	private Kysymys kysymys;
 	
@@ -40,6 +37,12 @@ public class Vastaus {
 		//
 	}
 	
+	/* public Vastaus(Vaihtoehto vaihtoehto, Kysymys kysymys) {
+		super();
+		this.vaihtoehto = vaihtoehto;
+		this.kysymys = kysymys;
+	} */
+
 	public Vastaus(String vastaus, Kysymys kysymys, Vaihtoehto vaihtoehto) {
 		super();
 		this.vastausteksti = vastaus;
@@ -67,6 +70,7 @@ public class Vastaus {
 		return kysymys;
 	}
 
+
 	public void setKysymys(Kysymys kysymys) {
 		this.kysymys = kysymys;
 	}
@@ -85,6 +89,4 @@ public class Vastaus {
 		return "Vastaus [vastausid=" + vastausid + ", vastausteksti=" + vastausteksti + "]";
 	}
 
-	
-	
 }
