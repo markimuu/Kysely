@@ -33,8 +33,6 @@ public class KysymysController {
 	@Autowired
 	private KyselyRepository krepo;
 	
-	
-	
 	// REST Homepage
     @RequestMapping(value="/resthome", method = RequestMethod.GET)
     public String resthomeList() {	

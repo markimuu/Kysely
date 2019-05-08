@@ -8,8 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface VaihtoehtoRepository extends CrudRepository<Vaihtoehto, Long>{
 	
 	List<Vaihtoehto> findByVaihtoehtoId(long vaihtoehtoId);
-	List<Vaihtoehto> findByVaihtoehto(String vaihtoehto);
-	
-	
+	List<Vaihtoehto> findByVaihtoehtoText(String vaihtoehtoText);
+	List<Vaihtoehto> findByJarjestusnumero(long jarjestusnumero);
 
 }

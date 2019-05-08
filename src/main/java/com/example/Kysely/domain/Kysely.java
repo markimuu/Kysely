@@ -39,7 +39,6 @@ public class Kysely {
 		this.otsikko = otsikko;
 		this.kuvaus = kuvaus;
 	}
-
 	
 	public long getKyselyid() {
 		return kyselyid;
@@ -65,7 +64,6 @@ public class Kysely {
 		this.otsikko = otsikko;
 	}
 	
-
 	public String getKuvaus() {
 		return kuvaus;
 	}
@@ -76,7 +74,9 @@ public class Kysely {
 
 	@Override
 	public String toString() {
-		return "Kysely [kyselyid=" + kyselyid + ", otsikko=" + otsikko + ", kysymykset=" + kysymykset + "]";
+		return "Kysely [kyselyid=" + kyselyid + ", otsikko=" + otsikko + ", kuvaus=" + kuvaus + ", kysymykset="
+				+ kysymykset + "]";
 	}
+
 	
 }
