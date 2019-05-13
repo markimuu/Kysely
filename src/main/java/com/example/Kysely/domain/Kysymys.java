@@ -13,38 +13,39 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 
 @Entity
 public class Kysymys {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="kysymysid", nullable = false, updatable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "kysymysid", nullable = false, updatable = false)
 	private long kysymysid;
 	private String kysymys;
 	private String kysymystyyppi;
-	
+
+	// Liitos vastaus-tauluun
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
 	@JsonBackReference
 	private List<Vastaus> vastaukset;
-	
+
+	// Liitos kysely-tauluun
 	@ManyToOne
 	@JsonBackReference(value = "kysymykset")
 	@JoinColumn(name = "kyselyid")
 	private Kysely kysely;
 
+	// Liitos vaihtoehto-tauluun
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
 	@JsonManagedReference
 	private List<Vaihtoehto> vaihtoehdot;
-	
+
 	public Kysymys() {
 		super();
-		//yolo
+		// yolo
 	}
-	
+
 	public Kysymys(String kysymys, Kysely kysely, String kysymystyyppi) {
 		super();
 		this.kysymys = kysymys;
@@ -52,16 +53,14 @@ public class Kysymys {
 		this.kysymystyyppi = kysymystyyppi;
 	}
 
-	
 	public String getKysymys() {
 		return kysymys;
 	}
-	
+
 	public void setKysymys(String kysymys) {
 		this.kysymys = kysymys;
 	}
-	
-	
+
 	public long getKysymysid() {
 		return kysymysid;
 	}
@@ -77,7 +76,6 @@ public class Kysymys {
 	public void setVastaus(List<Vastaus> vastaukset) {
 		this.vastaukset = vastaukset;
 	}
-	
 
 	public List<Vastaus> getVastaukset() {
 		return vastaukset;
@@ -94,7 +92,7 @@ public class Kysymys {
 	public void setKysely(Kysely kysely) {
 		this.kysely = kysely;
 	}
-	
+
 	public List<Vaihtoehto> getVaihtoehdot() {
 		return vaihtoehdot;
 	}
@@ -102,8 +100,6 @@ public class Kysymys {
 	public void setVaihtoehdot(List<Vaihtoehto> vaihtoehdot) {
 		this.vaihtoehdot = vaihtoehdot;
 	}
-	
-	
 
 	public String getKysymystyyppi() {
 		return kysymystyyppi;

@@ -1,6 +1,5 @@
 package com.example.Kysely.domain;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,31 +16,27 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class Vastaus {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="vastausid", nullable = false, updatable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "vastausid", nullable = false, updatable = false)
 	private long vastausid;
 	private String vastausteksti;
 
+	// Liitos kysymys-tauluun
 	@ManyToOne
 	@JsonBackReference(value = "kysymykset")
 	@JoinColumn(name = "kysymysid")
 	private Kysymys kysymys;
-	
+
+	// Liitos vaihtoehto-tauluun
 	@OneToOne
 	@JsonManagedReference(value = "vaihtoehtovastaus")
 	@JoinColumn(name = "vaihtoehtoid")
 	private Vaihtoehto vaihtoehto;
-	
+
 	public Vastaus() {
 		super();
 		//
 	}
-	
-	/* public Vastaus(Vaihtoehto vaihtoehto, Kysymys kysymys) {
-		super();
-		this.vaihtoehto = vaihtoehto;
-		this.kysymys = kysymys;
-	} */
 
 	public Vastaus(String vastaus, Kysymys kysymys, Vaihtoehto vaihtoehto) {
 		super();
@@ -65,16 +60,14 @@ public class Vastaus {
 	public void setVastausteksti(String vastausteksti) {
 		this.vastausteksti = vastausteksti;
 	}
-	
+
 	public Kysymys getKysymys() {
 		return kysymys;
 	}
 
-
 	public void setKysymys(Kysymys kysymys) {
 		this.kysymys = kysymys;
 	}
-	
 
 	public Vaihtoehto getVaihtoehto() {
 		return vaihtoehto;

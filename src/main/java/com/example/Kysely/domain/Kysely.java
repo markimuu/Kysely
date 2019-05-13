@@ -11,36 +11,34 @@ import javax.persistence.Id;
 
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Kysely {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="kyselyid", nullable = false, updatable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "kyselyid", nullable = false, updatable = false)
 	private long kyselyid;
 	private String otsikko;
 	private String kuvaus;
-	
+
+	// Liitos kysymykset-tauluun
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysely")
 	@JsonManagedReference(value = "kysymykset")
 	private List<Kysymys> kysymykset;
-	
-	
+
 	public Kysely() {
 		super();
-		//yolo
+		// yolo
 	}
-	
+
 	public Kysely(String otsikko, String kuvaus) {
 		super();
 		this.otsikko = otsikko;
 		this.kuvaus = kuvaus;
 	}
 
-	
 	public long getKyselyid() {
 		return kyselyid;
 	}
@@ -56,7 +54,7 @@ public class Kysely {
 	public void setKysymykset(List<Kysymys> kysymykset) {
 		this.kysymykset = kysymykset;
 	}
-	
+
 	public String getOtsikko() {
 		return otsikko;
 	}
@@ -64,7 +62,6 @@ public class Kysely {
 	public void setOtsikko(String otsikko) {
 		this.otsikko = otsikko;
 	}
-	
 
 	public String getKuvaus() {
 		return kuvaus;
@@ -78,5 +75,5 @@ public class Kysely {
 	public String toString() {
 		return "Kysely [kyselyid=" + kyselyid + ", otsikko=" + otsikko + ", kysymykset=" + kysymykset + "]";
 	}
-	
+
 }
