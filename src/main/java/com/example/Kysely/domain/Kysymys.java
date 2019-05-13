@@ -28,7 +28,7 @@ public class Kysymys {
 	// Liitos vastaus-tauluun
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
 	@JsonBackReference
-	private List<Vastaus> vastaukset;
+	private List<Vastaus> vastaus;
 
 	// Liitos kysely-tauluun
 	@ManyToOne
@@ -69,20 +69,20 @@ public class Kysymys {
 		this.kysymysid = kysymysid;
 	}
 
-	public List<Vastaus> getVastaus() {
-		return vastaukset;
+	/* public List<Vastaus> getVastaus() {
+		return vastaaa;
 	}
 
 	public void setVastaus(List<Vastaus> vastaukset) {
-		this.vastaukset = vastaukset;
-	}
+		this.vastaaa = vastaukset;
+	}  */
 
 	public List<Vastaus> getVastaukset() {
-		return vastaukset;
+		return vastaus;
 	}
 
 	public void setVastaukset(List<Vastaus> vastaukset) {
-		this.vastaukset = vastaukset;
+		this.vastaus = vastaukset;
 	}
 
 	public Kysely getKysely() {
@@ -111,7 +111,7 @@ public class Kysymys {
 
 	@Override
 	public String toString() {
-		return "Kysymys [kysymysid=" + kysymysid + ", kysymys=" + kysymys + ", vastaukset=" + vastaukset + ", kysely="
+		return "Kysymys [kysymysid=" + kysymysid + ", kysymys=" + kysymys + ", vastaukset=" + vastaus + ", kysely="
 				+ kysely + "]";
 	}
 
