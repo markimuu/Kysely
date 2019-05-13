@@ -30,6 +30,7 @@ public class KyselyApplication {
 			VaihtoehtoRepository vairepo) {
 		return (args) -> {
 
+			// Yhden kokonaisen Kyselyn testidata
 			Kysely kysely1 = new Kysely("Haaga-Helian AMK:n Hav-A-Java",
 					"Kyselyn takana on ryhmä Haaga-Helian kolmannen lukukauden IT-Tradenomiopiskelijoita. Tarkoituksenamme on tutkia kahvion käyttäjien kokemuksia ja mahdollisia kehitys ideoita.");
 			krepo.save(kysely1);
@@ -47,6 +48,7 @@ public class KyselyApplication {
 			repo.save(kysymys4);
 			repo.save(kysymys5);
 
+			// Vaihtoehdot kysymys 1 :lle
 			Vaihtoehto vaihtoehto1_1 = new Vaihtoehto("Mies", kysymys1, 1L);
 			Vaihtoehto vaihtoehto1_2 = new Vaihtoehto("Nainen", kysymys1, 2L);
 			Vaihtoehto vaihtoehto1_3 = new Vaihtoehto("Muu", kysymys1, 3L);
@@ -54,6 +56,7 @@ public class KyselyApplication {
 			vairepo.save(vaihtoehto1_2);
 			vairepo.save(vaihtoehto1_3);
 
+			// Vaihtoehdot kysymys 2 :lle
 			Vaihtoehto vaihtoehto2_1 = new Vaihtoehto("Opiskelija", kysymys2, 1L);
 			Vaihtoehto vaihtoehto2_2 = new Vaihtoehto("Henkilökunta", kysymys2, 2L);
 			Vaihtoehto vaihtoehto2_3 = new Vaihtoehto("Opettaja", kysymys2, 3L);
@@ -63,6 +66,7 @@ public class KyselyApplication {
 			vairepo.save(vaihtoehto2_3);
 			vairepo.save(vaihtoehto2_4);
 
+			// Vaihtoehdot kysymys 4 :lle
 			Vaihtoehto vaihtoehto3_1 = new Vaihtoehto("1 = Halpa", kysymys4, 1L);
 			Vaihtoehto vaihtoehto3_2 = new Vaihtoehto("2 = Normaalia halvempi", kysymys4, 2L);
 			Vaihtoehto vaihtoehto3_3 = new Vaihtoehto("3 = Normaali", kysymys4, 3L);

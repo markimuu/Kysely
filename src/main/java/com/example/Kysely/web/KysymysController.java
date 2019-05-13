@@ -16,6 +16,8 @@ import com.example.Kysely.domain.Kysely;
 import com.example.Kysely.domain.KyselyRepository;
 import com.example.Kysely.domain.Kysymys;
 import com.example.Kysely.domain.KysymysRepository;
+import com.example.Kysely.domain.Vaihtoehto;
+import com.example.Kysely.domain.VaihtoehtoRepository;
 import com.example.Kysely.domain.Vastaus;
 import com.example.Kysely.domain.VastausRepository;
 
@@ -31,6 +33,9 @@ public class KysymysController {
 
 	@Autowired
 	private KyselyRepository krepo;
+	
+	@Autowired 
+	private VaihtoehtoRepository vairepo;
 
 	// REST Homepage
 	@RequestMapping(value = "/resthome", method = RequestMethod.GET)
@@ -95,4 +100,23 @@ public class KysymysController {
 		return krepo.findById(kyselyid);
 	}
 
+	// Tästä alkaa vaihtoehtojutskat
+	// REST Get all question options
+	@RequestMapping(value = "/vaihtoehdot", method = RequestMethod.GET)
+	public @ResponseBody List<Vaihtoehto> vaihtoehtoRest() {
+		return (List<Vaihtoehto>) vairepo.findAll();
+	}
+
+	// REST Save one question option
+	@RequestMapping(value = "/vaihtoehdot", method = RequestMethod.POST)
+	public @ResponseBody Vaihtoehto addVaihtoehtoRest(@RequestBody Vaihtoehto vaihtoehto) {
+		return vairepo.save(vaihtoehto);
+	}
+
+	// REST Get question option by id
+	@RequestMapping(value = "/vaihtoehto/{vaihtoehtoId}", method = RequestMethod.GET)
+	public @ResponseBody Optional<Vaihtoehto> findVaihtoehtoRest(@PathVariable("vaihtoehtoId") Long vaihtoehtoId) {
+		return vairepo.findById(vaihtoehtoId);
+	}
+	
 }

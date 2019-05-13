@@ -87,7 +87,7 @@
 
 	<h2>Uusi Kysymys</h2>
 	<p>
-		<strong>Method:</strong> POST <strong>Endpoint: /kysymykset</strong> 
+		<strong>Method:</strong> POST <strong>Endpoint: <a href="/kysymykset/">/kysymykset</a></strong> 
 		(Kokeile <a href="https://www.getpostman.com/" target="_blank">Postmänillä</a>/jne.)
 	</p>
 	<p>
@@ -145,7 +145,7 @@
 	
 	<h2>Uusi Vastaus</h2>
 	<p>
-		<strong>Method:</strong> POST <strong>Endpoint: /vastaukset</strong> 
+		<strong>Method:</strong> POST <strong>Endpoint: <a href="/vastaukset/">/vastaukset</a></strong> 
 		(Kokeile <a href="https://www.getpostman.com/" target="_blank">Postmänillä</a>/jne.)
 	</p>
 	<p>
@@ -194,7 +194,7 @@
 	
 		<h2>Uusi Kysely</h2>
 	<p>
-		<strong>Method:</strong> POST <strong>Endpoint: /kyselyt</strong> 
+		<strong>Method:</strong> POST <strong>Endpoint: <a href="/kysely/">/kyselyt</a></strong> 
 		(Kokeile <a href="https://www.getpostman.com/" target="_blank">Postmänillä</a>/jne.)
 	</p>
 	<p>
@@ -205,5 +205,58 @@
 	"kuvaus": "esimerkki kuvaus uudelle kyselylle"
 	}	</code></pre>
 	
+	<h2>Kaikki Vaihtoehdot</h2>
+	<p>
+		<strong>Method:</strong> GET <strong>Endpoint:</strong>
+		<strong><a href="vaihtoehdot">/vaihtoehdot</a></strong>
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	<pre><code>    {
+        "vaihtoehtoId": 1,
+        "vaihtoehto": "Mies",
+        "jarjestusnumero": 1
+    },
+    {
+        "vaihtoehtoId": 2,
+        "vaihtoehto": "Nainen",
+        "jarjestusnumero": 2
+    }</code></pre>
+
+	<h2>Vaihtoehto Id :llä</h2>
+	<p>
+		<strong>Method: </strong> GET <strong>Endpoint:</strong>
+		<strong><a href="/vaihtoehto/2">/vaihtoehto/2</a></strong>
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	
+	<pre><code>	{
+   	"vaihtoehtoId": 2,
+    	"vaihtoehto": "Nainen",
+    	"jarjestusnumero": 2
+	}</code></pre>
+	
+	<h2>Uusi Vaihtoehto</h2>
+	<p>
+		<strong>Method:</strong> POST <strong>Endpoint: <a href="/vaihtoehdot/">/vaihtoehdot</a></strong> 
+		(Kokeile <a href="https://www.getpostman.com/" target="_blank">Postmänillä</a>/jne.)
+	</p>
+	<p>
+		<strong>JSON Esimerkki:</strong>
+	</p>
+	<pre><code> 	<b>Radiobutton/Selectbox vaihtoehto lisäys esimerkki:</b>
+	
+	{
+	"vaihtoehto":"En halua kertoa",
+	"jarjestusnumero": 4,
+    	"kysymys": {
+    		"kysymysid": 1
+    		}
+	}	
+	
+	</code></pre>
     </body>
 </html>
